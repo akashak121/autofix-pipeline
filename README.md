@@ -1,13 +1,16 @@
-# AutoFix Pipeline
+# Autofix Pipeline 🚀
 
-AutoFix Pipeline is a beginner-level Java + DevOps project.
+Spring Boot + DevOps project that demonstrates:
+- CI with GitHub Actions
+- Health check endpoint
+- Future AI-based code review & auto-fix pipeline
 
-This project aims to build a Spring Boot application integrated with
-a CI pipeline that can review code and suggest automatic fixes.
-
-Tech Stack:
+## Tech Stack
 - Java
 - Spring Boot
 - Maven
-- GitHub Actions (later)
-- DevOps basics
+- GitHub Actions
+
+## Run Locally
+```bash
+./mvnw spring-boot:run

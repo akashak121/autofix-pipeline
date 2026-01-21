@@ -1,24 +1,36 @@
-  name: Java CI with Maven
+name: CI Pipeline
 
-  on:
-    push:
-      branches: [ "main" ]
-    pull_request:
-      branches: [ "main" ]
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
-  jobs:
-    build:
-      runs-on: ubuntu-latest
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v4
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-        - name: Set up JDK 17
-          uses: actions/setup-java@v4
-          with:
-            distribution: 'temurin'
-            java-version: '17'
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
 
-        - name: Build with Maven
-          run: mvn clean test
+      - name: Build JAR with Maven
+        run: mvn -B clean package
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERUSERNAME }}
+          password: ${{ secrets.DOCKERPASSWORD }}
+
+      - name: Build Docker image
+        run: docker build -t ${{ secrets.DOCKERUSERNAME }}/autofix-pipeline:latest .
+
+      - name: Push Docker image
+        run: docker push ${{ secrets.DOCKERUSERNAME }}/autofix-pipeline:latest

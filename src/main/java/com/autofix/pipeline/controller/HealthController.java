@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HealthController {
 
-    @GetMapping("/health")
-    public String health() {
-        return "AutoFix Pipeline is running";
-    }
+  @GetMapping("/health")
+  public String health() {
+    return "AutoFix Pipeline is running";
+  }
 }

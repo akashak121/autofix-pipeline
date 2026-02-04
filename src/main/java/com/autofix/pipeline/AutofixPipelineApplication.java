@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class AutofixPipelineApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(AutofixPipelineApplication.class, args);
+
+      SpringApplication.run(AutofixPipelineApplication.class, args);
   }
 }

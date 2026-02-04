@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HomeController {
 
-  @GetMapping("/")
-  public String home() {
-    return "🚀 Autofix Pipeline is running successfully!";
-  }
+    @GetMapping("/")
+    public String home() {
+        return "✅ AutoFix Pipeline is running";
+    }
 }
